@@ -1,0 +1,31 @@
+
+PROJECT STRUCTURE
+
+student-attendance-management-system/
+│
+├── index.html
+├── README.md
+├── docs_project_structure.txt
+│
+├── css/
+│   └── style.css
+│
+└── js/
+    └── app.js
+
+DEVELOPMENT SEQUENCE
+
+1. Create the project folder.
+2. Create index.html.
+3. Create css/style.css.
+4. Create js/app.js.
+5. Open index.html with Live Server.
+6. Login using admin/admin123.
+7. Add students or use the included demo students.
+8. Go to Mark Attendance.
+9. Select date and mark Present/Absent.
+10. Save attendance.
+11. Open Records to view date-wise data.
+12. Open Reports to view attendance percentages.
+13. Export the report as CSV.
+14. Take screenshots for the mini-project report and PPT.

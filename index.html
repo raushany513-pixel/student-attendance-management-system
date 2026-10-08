@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <!-- Login -->
+  <section id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="brand-mark">SAM</div>
+      <h1>Student Attendance</h1>
+      <p class="muted">Management System</p>
+      <form id="loginForm">
+        <label>Username</label>
+        <input id="username" type="text" placeholder="Enter username" autocomplete="username" required>
+        <label>Password</label>
+        <input id="password" type="password" placeholder="Enter password" autocomplete="current-password" required>
+        <button class="btn primary full" type="submit">Login</button>
+      </form>
+      <p class="demo-note">Demo login: <b>JSSATE</b> / <b>JSSATE123</b></p>
+    </div>
+  </section>
+
+  <!-- Application -->
+  <section id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark small">JSS</div>
+        <div>
+          <strong>Attendance</strong>
+          <span>Management System</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-section="dashboard">Dashboard</button>
+        <button class="nav-item" data-section="students">Students</button>
+        <button class="nav-item" data-section="attendance">Mark Attendance</button>
+        <button class="nav-item" data-section="records">Attendance Records</button>
+        <button class="nav-item" data-section="reports">Reports</button>
+      </nav>
+      <button id="logoutBtn" class="logout">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">Dashboard</h2>
+          <p id="todayText" class="muted"></p>
+        </div>
+        <div class="user-pill">JSSATE</div>
+      </header>
+
+      <!-- Dashboard for JSSATE Attendance -->
+      <section id="dashboard" class="content-section active-section">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">SMART ATTENDANCE</p>
+            <h1>Good day, JSSATE 👋</h1>
+
+            <p>Manage students, mark attendance and track attendance performance from one place.</p>
+          </div>
+          <button class="btn light" data-go="attendance">Mark Today's Attendance</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><span>Total Students</span><strong id="totalStudents">0</strong></div>
+          <div class="stat-card"><span>Present Today</span><strong id="presentToday">0</strong></div>
+          <div class="stat-card"><span>Absent Today</span><strong id="absentToday">0</strong></div>
+          <div class="stat-card"><span>Today's Attendance</span><strong id="todayPercent">0%</strong></div>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-head"><h3>Quick Actions</h3></div>
+            <div class="quick-actions">
+              <button class="action-card" data-go="students"><b>+ Add Student</b><span>Create a new student record</span></button>
+              <button class="action-card" data-go="attendance"><b>✓ Mark Attendance</b><span>Record today's attendance</span></button>
+              <button class="action-card" data-go="records"><b>▣ View Records</b><span>Search attendance history</span></button>
+              <button class="action-card" data-go="reports"><b>↗ Reports</b><span>Export attendance data</span></button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Recent Students</h3></div>
+            <div id="recentStudents" class="mini-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Students -->
+      <section id="students" class="content-section">
+        <div class="section-head">
+          <div><h2>Student Management</h2><p class="muted">Add, search and remove student records.</p></div>
+          <button id="openStudentModal" class="btn primary">+ Add Student</button>
+        </div>
+        <div class="panel">
+          <div class="toolbar">
+            <input id="studentSearch" class="search" placeholder="Search by name, roll number or branch...">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Roll No.</th><th>Name</th><th>Branch</th><th>Year</th><th>Section</th><th>Action</th></tr></thead>
+              <tbody id="studentsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Attendance -->
+      <section id="attendance" class="content-section">
+        <div class="section-head">
+          <div><h2>Mark Attendance</h2><p class="muted">Select a date and mark each student's status.</p></div>
+          <div class="date-control"><label>Date</label><input id="attendanceDate" type="date"></div>
+        </div>
+        <div class="stats-grid compact">
+          <div class="stat-card"><span>Total</span><strong id="attTotal">0</strong></div>
+          <div class="stat-card"><span>Present</span><strong id="attPresent">0</strong></div>
+          <div class="stat-card"><span>Absent</span><strong id="attAbsent">0</strong></div>
+          <div class="stat-card"><span>Percentage</span><strong id="attPercent">0%</strong></div>
+        </div>
+        <div class="panel">
+          <div class="toolbar">
+            <input id="attendanceSearch" class="search" placeholder="Search student...">
+            <button id="markAllPresent" class="btn success">Mark All Present</button>
+            <button id="markAllAbsent" class="btn danger">Mark All Absent</button>
+            <button id="saveAttendance" class="btn primary">Save Attendance</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Roll No.</th><th>Student</th><th>Branch</th><th>Present</th><th>Absent</th><th>Status</th></tr></thead>
+              <tbody id="attendanceTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Records -->
+      <section id="records" class="content-section">
+        <div class="section-head">
+          <div><h2>Attendance Records</h2><p class="muted">Review saved attendance by date.</p></div>
+          <input id="recordDate" type="date">
+        </div>
+        <div class="panel">
+          <div class="toolbar">
+            <input id="recordSearch" class="search" placeholder="Search student...">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Date</th><th>Roll No.</th><th>Name</th><th>Branch</th><th>Status</th></tr></thead>
+              <tbody id="recordsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reports -->
+      <section id="reports" class="content-section">
+        <div class="section-head">
+          <div><h2>Attendance Reports</h2><p class="muted">Student-wise attendance summary.</p></div>
+          <button id="exportCsv" class="btn primary">Export CSV</button>
+        </div>
+        <div class="panel">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Roll No.</th><th>Name</th><th>Branch</th><th>Total Classes</th><th>Present</th><th>Absent</th><th>Attendance %</th></tr></thead>
+              <tbody id="reportsTable"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel note-panel">
+          <h3>Attendance Formula</h3>
+          <p><b>Attendance Percentage = (Number of Present Classes ÷ Total Classes) × 100</b></p>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- Student Modal -->
+  <div id="studentModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head"><h3>Add Student</h3><button class="icon-btn" id="closeModal">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <div><label>Roll Number</label><input id="studentRoll" required></div>
+          <div><label>Student Name</label><input id="studentName" required></div>
+          <div><label>Branch</label><select id="studentBranch"><option>IT</option><option>CS</option><option>CSE</option><option>CSDS</option><option>ECE</option><option>ME</option><option>CE</option></select></div>
+          <div><label>Year</label><select id="studentYear"><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option></select></div>
+          <div><label>Section</label><select id="studentSection"><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+        </div>
+        <button class="btn primary full" type="submit">Add Student</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
