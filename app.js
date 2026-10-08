@@ -23,11 +23,21 @@ function showToast(message) {
 function seedDemoData() {
   if (students.length) return;
   students = [
-    {id: crypto.randomUUID(), roll:"101", name:"Aarav Sharma", branch:"IT", year:"3rd", section:"A"},
-    {id: crypto.randomUUID(), roll:"102", name:"Priya Singh", branch:"CSDS", year:"3rd", section:"A"},
-    {id: crypto.randomUUID(), roll:"103", name:"Rahul Verma", branch:"CSE", year:"3rd", section:"A"},
-    {id: crypto.randomUUID(), roll:"104", name:"Ananya Gupta", branch:"IT", year:"3rd", section:"A"},
-    {id: crypto.randomUUID(), roll:"105", name:"Rohan Yadav", branch:"CS", year:"3rd", section:"A"}
+    {id: crypto.randomUUID(), roll:"155", name:"Raushan Kumar Yadav", branch:"IT", year:"2ndd", section:"C"},
+    {id: crypto.randomUUID(), roll:"148", name:"Rahul Maurya", branch:"IT", year:"2nd", section:"C"},
+    {id: crypto.randomUUID(), roll:"103", name:"Raghav verma", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"104", name:"Ayushi mishra", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"105", name:"Rohan Yadav", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"139", name:"Pratiyush Prabhat", branch:"IT", year:"2ndd", section:"C"},
+    {id: crypto.randomUUID(), roll:"148", name:"Divyanshi", branch:"IT", year:"2nd", section:"C"},
+    {id: crypto.randomUUID(), roll:"106", name:"Raghav Verma", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"107", name:"Ananya Gupta", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"108", name:"Ashwani kumar", branch:"IT", year:"3rd", section:"C"},
+        {id: crypto.randomUUID(), roll:"109", name:"Divyansh Sharma", branch:"IT", year:"2nd", section:"C"},
+    {id: crypto.randomUUID(), roll:"110", name:"Shanu Kumar", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"111", name:"Mohit kumar", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"112", name:"Rustam kumar", branch:"IT", year:"3rd", section:"C"}
+
   ];
   saveData();
 }
