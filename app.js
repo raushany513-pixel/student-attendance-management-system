@@ -30,7 +30,7 @@ function seedDemoData() {
     {id: crypto.randomUUID(), roll:"105", name:"Rohan Yadav", branch:"IT", year:"3rd", section:"C"},
     {id: crypto.randomUUID(), roll:"139", name:"Pratiyush Prabhat", branch:"IT", year:"2ndd", section:"C"},
     {id: crypto.randomUUID(), roll:"148", name:"Divyanshi", branch:"IT", year:"2nd", section:"C"},
-    {id: crypto.randomUUID(), roll:"106", name:"Raghav Verma", branch:"IT", year:"3rd", section:"C"},
+    {id: crypto.randomUUID(), roll:"106", name:"Ayush Verma", branch:"IT", year:"3rd", section:"C"},
     {id: crypto.randomUUID(), roll:"107", name:"Ananya Gupta", branch:"IT", year:"3rd", section:"C"},
     {id: crypto.randomUUID(), roll:"108", name:"Ashwani kumar", branch:"IT", year:"3rd", section:"C"},
         {id: crypto.randomUUID(), roll:"109", name:"Divyansh Sharma", branch:"IT", year:"2nd", section:"C"},
